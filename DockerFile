@@ -1,0 +1,22 @@
+FROM python:3.11
+
+# create /app directory
+RUN mkdir /app
+
+# Path: /app
+WORKDIR /app
+
+# copy requirements.txt to /app
+COPY requirements.txt .
+
+#copy server.py to /app
+COPY servers.py .
+
+# install requirements.txt
+RUN pip install -r requirements.txt
+
+# expose port 8700
+EXPOSE 51000
+
+# run server.py
+CMD ["python", "servers.py"]
